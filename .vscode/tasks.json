@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "tsc: watch",
+      "type": "typescript",
+      "option": "watch",
+      "tsconfig": "tsconfig.json"
+    }
+  ]
+}
