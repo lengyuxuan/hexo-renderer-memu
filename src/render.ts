@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 import * as cheerio from 'cheerio';
 import { transformMarkdown } from './memu/transformer';
@@ -40,9 +39,7 @@ useMarkdownItCodeFences(markdownIt);
 useMarkdownItCriticMarkup(markdownIt);
 useMarkdownItEmoji(markdownIt);
 
-const md = fs.readFileSync(path.join(__dirname, '../README.md')).toString();
-
-(async () => {
+export default async function (md: string) {
   const { outputString } = await transformMarkdown(md, {
     fileDirectoryPath: null,
     projectDirectoryPath: null,
@@ -73,5 +70,5 @@ const md = fs.readFileSync(path.join(__dirname, '../README.md')).toString();
     offline: false,
     embedSVG: true,
   });
-  fs.writeFileSync(path.join(__dirname, '../x.html'), html);
-})();
+  return html;
+};
