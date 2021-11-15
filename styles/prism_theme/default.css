@@ -9,14 +9,14 @@ code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
 	background: none;
-	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 13px;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
-	line-height: 1.5;
+	line-height: 2.5rem;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -140,7 +140,7 @@ pre[class*="language-"] {
 /* highlight */
 pre[data-line] {
 	position: relative;
-	padding: 1em 0 1em 3em;
+	padding: 1em 0 1em 11px;
   }
   pre[data-line] .line-highlight-wrapper {
 	position: absolute;
@@ -166,7 +166,7 @@ pre[data-line] {
   
   pre[data-line] .line-highlight:before, 
   pre[data-line] .line-highlight[data-end]:after {
-	content: attr(data-start);
+	content: '';
 	position: absolute;
 	top: .4em;
 	left: .6em;
@@ -183,7 +183,7 @@ pre[data-line] {
   }
   
   pre[data-line] .line-highlight[data-end]:after {
-	content: attr(data-end);
+	content: '';
 	top: auto;
 	bottom: .4em;
   }

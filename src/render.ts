@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import * as path from 'path';
 import * as cheerio from 'cheerio';
 import { transformMarkdown } from './memu/transformer';
@@ -39,7 +40,8 @@ useMarkdownItCodeFences(markdownIt);
 useMarkdownItCriticMarkup(markdownIt);
 useMarkdownItEmoji(markdownIt);
 
-export default async function (md: string) {
+export default async function (data) {
+  const md = fs.readFileSync(data.path).toString();
   const { outputString } = await transformMarkdown(md, {
     fileDirectoryPath: null,
     projectDirectoryPath: null,
@@ -70,5 +72,8 @@ export default async function (md: string) {
     offline: false,
     embedSVG: true,
   });
-  return html;
+  const posts = path.join(__dirname, '../../../source/_posts');
+  return html.replace(/<img.+?src="(?<src>.+?)"/g, (img, src) => {
+      return img.replace(src, path.join(data.path, src).replace(posts, ''));
+  });
 };
