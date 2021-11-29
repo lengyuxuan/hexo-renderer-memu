@@ -24,7 +24,12 @@ export default (md: MarkdownIt) => {
     const finalBreak =
       idx < tokens.length && tokens[idx].type === 'list_item_close' ? '\n' : '';
 
-    return `<pre data-role="codeBlock" data-info="${escapeString(
+    return `
+    <div class="code-title">
+      <a name="${ parsedInfo.attributes.file }">${ parsedInfo.attributes.file || '' }</a>
+      <span>${ parsedInfo.language }</span>
+    </div>
+    <pre data-role="codeBlock" data-info="${escapeString(
       info,
     )}" data-parsed-info="${escapeString(
       JSON.stringify(parsedInfo),
