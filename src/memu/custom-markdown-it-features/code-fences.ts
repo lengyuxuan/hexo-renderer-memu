@@ -26,7 +26,7 @@ export default (md: MarkdownIt) => {
 
     return `
     <div class="code-title">
-      <a name="${ parsedInfo.attributes.file }">${ parsedInfo.attributes.file || '' }</a>
+      <a name="${ parsedInfo.attributes.file }">${ parsedInfo.attributes.file || 'code' }</a>
       <span>${ parsedInfo.language }</span>
     </div>
     <pre data-role="codeBlock" data-info="${escapeString(
