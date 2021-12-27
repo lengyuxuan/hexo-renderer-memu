@@ -52,11 +52,14 @@ export default async function enhance(
     // check .mume-header in order to add id and class to headers.
     $('.mume-header').each((i, e) => {
       const classes = e.attribs.class;
-      const id = e.attribs.id;
+      const id = encodeURIComponent(e.attribs.id);
       const $e = $(e);
       const $h = $e.prev();
       $h.addClass(classes);
-      $h.attr('id', encodeURIComponent(id)); // encodeURIComponent to fix utf-8 header.
+      const text = $h.text();
+      $h.empty();
+      $h.append(`<a href="#${ id }">${ text }</a>`)
+      $h.attr('id', id);
       $e.remove();
     });
   }
